@@ -54,6 +54,45 @@ struct ContentView: View {
                     .cornerRadius(cornerRadius)
                     .shadow(radius: shadowRadius)
                     .padding()
+        VStack {
+            
+            ProgressView(value: Double(currentQuestion),
+                         total: Double(questions.count))
+            .padding()
+             
+            Text(questions[currentQuestion].title)
+                .padding()
+            
+            HStack {
+                VStack {
+                    Button {
+                        didTapOption(optionNumber: .one)
+                    } label: {
+                        Image(systemName: "triangle.fill")
+                        Text((questions[currentQuestion].option1))
+                    }
+                    .frame(width: width, height: height)
+                    .background(Color.red)
+                    .foregroundColor(.white)
+                    .cornerRadius(cornerRadius)
+                    .shadow(radius: shadowRadius)
+                    
+                    Button {
+                        didTapOption(optionNumber: .two)
+                    } label: {
+                        Image(systemName: "diamond.fill")
+                        Text((questions[currentQuestion].option2))
+                    }
+                    .frame(width: width, height: height)
+                    .background(Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(cornerRadius)
+                    .shadow(radius: shadowRadius)
+                }
+                    .foregroundColor(.white)
+                    .cornerRadius(cornerRadius)
+                    .shadow(radius: shadowRadius)
+                    .padding()
                 
                 HStack {
                     VStack {
@@ -139,6 +178,22 @@ struct ContentView: View {
                     ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
                 }
             }
+            .padding()
+        }
+        .alert(isPresented: $isAlertPresented) {
+            
+            Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
+                  message: Text(isCorrect ? "Oh wow what is this ? you became smart ?" : "WHAT IS THIS TOMFOOLERY?! WITH THE POWER OF SHREK YOU WILL BE PUNISHED"),
+                  dismissButton: .default(Text("OK")) {
+                currentQuestion += 1
+                
+                if currentQuestion == questions.count {
+                    isModalPresented = true
+                    currentQuestion = 0
+                }
+            })
+        }.sheet(isPresented: $isModalPresented) {
+            ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
         }
     }
     
