@@ -9,24 +9,24 @@ import SwiftUI
 
 struct ContentView: View {
     
-    var questions = [Question(title: "What day is it?",
+    let questions = [Question(title: "What day is it?",
                               option1: "Monday",
                               option2: "Friday",
                               option3: "Wednesday",
                               option4: "Saturday",
-                              correctOption: 4),
+                              correctOption: .four),
                      Question(title: "What framework are we using?",
                               option1: "UIKit",
                               option2: "SwiftUI",
                               option3: "React Native",
                               option4: "Flutter",
-                              correctOption: 2),
+                              correctOption: .two),
                      Question(title: "Which company created Swift?",
                               option1: "Apple",
                               option2: "Orange",
                               option3: "Google",
                               option4: "Tinkercademy",
-                              correctOption: 1)]
+                              correctOption: .one)]
     
     @State var currentQuestion = 0
     
@@ -45,19 +45,19 @@ struct ContentView: View {
             HStack {
                 VStack {
                     Button(questions[currentQuestion].option1) {
-                        didTapOption(optionNumber: 1)
+                        didTapOption(optionNumber: .one)
                     }
                     Button(questions[currentQuestion].option2) {
-                        didTapOption(optionNumber: 2)
+                        didTapOption(optionNumber: .two)
                     }
                 }
                 .padding()
                 VStack {
                     Button(questions[currentQuestion].option3) {
-                        didTapOption(optionNumber: 3)
+                        didTapOption(optionNumber: .three)
                     }
                     Button(questions[currentQuestion].option4) {
-                        didTapOption(optionNumber: 4)
+                        didTapOption(optionNumber: .four)
                     }
                 }
                 .padding()
@@ -81,7 +81,7 @@ struct ContentView: View {
         }
     }
     
-    func didTapOption(optionNumber: Int) {
+    func didTapOption(optionNumber: CorrectOptions) {
         if optionNumber == questions[currentQuestion].correctOption {
             print("Correct!")
             isCorrect = true
