@@ -38,8 +38,8 @@ struct ContentView: View {
     
     @State var isModalPresented = false
     
-    let width = 150.0
-    let height = 150.0
+    let width = 130.0
+    let height = 200.0
     let cornerRadius = 15.0
     let shadowRadius = 5.0
     
@@ -68,6 +68,7 @@ struct ContentView: View {
                     VStack {
                         //Button 1
                         Button {
+                            didTapOption(optionNumber: .one)
                         } label: {
                             ZStack{
                                 Image(systemName: "triangle.fill")
@@ -78,18 +79,18 @@ struct ContentView: View {
                                     .bold()
                                     .padding()
                             }
+                            .frame(width: width, height: height)
+                            .background(Color.red)
+                            .foregroundColor(.white)
+                            .cornerRadius(cornerRadius)
+                            .shadow(radius: shadowRadius)
                         }
-                        .frame(width: width, height: height)
-                        .background(Color.red)
-                        .foregroundColor(.white)
-                        .cornerRadius(cornerRadius)
-                        .shadow(radius: shadowRadius)
-                        .onTapGesture {
-                            didTapOption(optionNumber: .one)
-                        }
+                        
+                        
                         
                         //Button 2
                         Button {
+                            didTapOption(optionNumber: .two)
                         } label: {
                             ZStack{
                                 Image(systemName: "diamond.fill")
@@ -100,15 +101,14 @@ struct ContentView: View {
                                     .bold()
                                     .padding()
                             }
+                            .frame(width: width, height: height)
+                            .background(Color.green)
+                            .foregroundColor(.white)
+                            .cornerRadius(cornerRadius)
+                            .shadow(radius: shadowRadius)
                         }
-                        .frame(width: width, height: height)
-                        .background(Color.green)
-                        .foregroundColor(.white)
-                        .cornerRadius(cornerRadius)
-                        .shadow(radius: shadowRadius)
-                        .onTapGesture {
-                            didTapOption(optionNumber: .two)
-                        }
+                        
+                        
                     }
                     .padding()
                     
@@ -116,6 +116,7 @@ struct ContentView: View {
                     VStack {
                         //Button 3
                         Button {
+                            didTapOption(optionNumber: .three)
                         } label: {
                             ZStack{
                                 Image(systemName: "circle.fill")
@@ -126,18 +127,18 @@ struct ContentView: View {
                                     .bold()
                                     .padding()
                             }
+                            .frame(width: width, height: height)
+                            .background(Color.yellow)
+                            .foregroundColor(.white)
+                            .cornerRadius(cornerRadius)
+                            .shadow(radius: shadowRadius)
                         }
-                        .frame(width: width, height: height)
-                        .background(Color.yellow)
-                        .foregroundColor(.white)
-                        .cornerRadius(cornerRadius)
-                        .shadow(radius: shadowRadius)
-                        .onTapGesture {
-                            didTapOption(optionNumber: .three)
-                        }
+                       
+                       
                         
 //                        Button 4
                         Button {
+                            didTapOption(optionNumber: .four)
                         } label: {
                             ZStack{
                                 Image(systemName: "square.fill")
@@ -148,15 +149,14 @@ struct ContentView: View {
                                     .bold()
                                     .padding()
                             }
+                            .frame(width: width, height: height)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(cornerRadius)
+                            .shadow(radius: shadowRadius)
                         }
-                        .frame(width: width, height: height)
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(cornerRadius)
-                        .shadow(radius: shadowRadius)
-                        .onTapGesture {
-                            didTapOption(optionNumber: .four)
-                        }
+                        
+
                     }
                     
                     .alert(isPresented: $isAlertPresented) {
