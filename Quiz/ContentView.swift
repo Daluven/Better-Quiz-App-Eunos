@@ -13,20 +13,21 @@ struct ContentView: View {
                               option1: "Monday",
                               option2: "Friday",
                               option3: "Wednesday",
-                              option4: "Saturday",
+                              option4: "Thursday",
                               correctOption: .four),
-                     Question(title: "What framework are we using?",
-                              option1: "UIKit",
-                              option2: "SwiftU I",
-                              option3: "React Native",
-                              option4: "Flutter",
-                              correctOption: .two),
-                     Question(title: "Which company created Swift?",
-                              option1: "Apple",
-                              option2: "Orange",
-                              option3: "Google",
-                              option4: "Tinkercademy",
-                              correctOption: .one)]
+                     Question(title: "Who is yj ?",
+                              option1: "Nutella",
+                              option2: "Potato",
+                              option3: "Human",
+                              option4: "Instructor",
+                              correctOption: .one),
+                     Question(title: "Who is jahen",
+                              option1: "A machine that makes slides",
+                              option2: "A school going kid",
+                              option3: "A human",
+                              option4: "Property of yj",
+                              correctOption: .four),
+                    Question(title: "what is shrek famous for", option1: "Animation", option2: "Voice", option3: "Writing", option4: "SHREK", correctOption: .four)]
     
     @State var currentQuestion = 0
     
@@ -125,7 +126,7 @@ struct ContentView: View {
                     .alert(isPresented: $isAlertPresented) {
                         
                         Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
-                              message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
+                              message: Text(isCorrect ? "Congrats, you are kinda smart." : "What is this tomfoolery? i expected better ! hmp"),
                               dismissButton: .default(Text("OK")) {
                             currentQuestion += 1
                             
