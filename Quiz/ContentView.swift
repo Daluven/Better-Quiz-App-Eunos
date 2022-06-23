@@ -56,7 +56,7 @@ struct ContentView: View {
                 .padding()
                 
                 Text(questions[currentQuestion].title)
-                    .frame(width: 290, height: 120)
+                    .frame(width: 290, height: 200)
                     .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(cornerRadius)
@@ -69,8 +69,15 @@ struct ContentView: View {
                         //Button 1
                         Button {
                         } label: {
-                            Image(systemName: "triangle.fill")
-                            Text((questions[currentQuestion].option1))
+                            ZStack{
+                                Image(systemName: "triangle.fill")
+                                    .font(.system(size: 72))
+                                    .opacity(0.2)
+                                Text((questions[currentQuestion].option1))
+                                    .font(.system(size: 24))
+                                    .bold()
+                                    .padding()
+                            }
                         }
                         .frame(width: width, height: height)
                         .background(Color.red)
@@ -84,8 +91,15 @@ struct ContentView: View {
                         //Button 2
                         Button {
                         } label: {
-                            Image(systemName: "diamond.fill")
-                            Text((questions[currentQuestion].option2))
+                            ZStack{
+                                Image(systemName: "diamond.fill")
+                                    .font(.system(size: 72))
+                                    .opacity(0.2)
+                                Text((questions[currentQuestion].option2))
+                                    .font(.system(size: 24))
+                                    .bold()
+                                    .padding()
+                            }
                         }
                         .frame(width: width, height: height)
                         .background(Color.green)
@@ -103,8 +117,15 @@ struct ContentView: View {
                         //Button 3
                         Button {
                         } label: {
-                            Image(systemName: "circle.fill")
-                            Text(questions[currentQuestion].option3)
+                            ZStack{
+                                Image(systemName: "circle.fill")
+                                    .font(.system(size: 72))
+                                    .opacity(0.2)
+                                Text((questions[currentQuestion].option3))
+                                    .font(.system(size: 24))
+                                    .bold()
+                                    .padding()
+                            }
                         }
                         .frame(width: width, height: height)
                         .background(Color.yellow)
@@ -118,8 +139,15 @@ struct ContentView: View {
 //                        Button 4
                         Button {
                         } label: {
-                            Image(systemName: "square.fill")
-                            Text((questions[currentQuestion].option4))
+                            ZStack{
+                                Image(systemName: "square.fill")
+                                    .font(.system(size: 72))
+                                    .opacity(0.2)
+                                Text((questions[currentQuestion].option4))
+                                    .font(.system(size: 22))
+                                    .bold()
+                                    .padding()
+                            }
                         }
                         .frame(width: width, height: height)
                         .background(Color.blue)
