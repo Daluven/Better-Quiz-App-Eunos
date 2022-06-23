@@ -38,27 +38,34 @@ struct ContentView: View {
     @State var isModalPresented = false
     
     let width = 130.0
-    let height = 60.0
+    let height = 200.0
     let cornerRadius = 15.0
     let shadowRadius = 5.0
     
     var body: some View {
         ZStack {
+            
             LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .topLeading, endPoint: .trailing)
                 .ignoresSafeArea(.all)
+            
             VStack {
+                
                 ProgressView(value: Double(currentQuestion),
                              total: Double(questions.count))
                 .padding()
+                
                 Text(questions[currentQuestion].title)
-                    .frame(width: 280, height: 120)
+                    .frame(width: 290, height: 120)
                     .background(Color.black)
                     .foregroundColor(.white)
                     .cornerRadius(cornerRadius)
                     .shadow(radius: shadowRadius)
-                    .padding()
+                    
+                
                 HStack {
+                    
                     VStack {
+                        //Button 1
                         Button {
                             didTapOption(optionNumber: .one)
                         } label: {
@@ -71,6 +78,7 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                         
+                        //Button 2
                         Button {
                             didTapOption(optionNumber: .two)
                         } label: {
@@ -83,12 +91,11 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                     }
-                    .foregroundColor(.white)
-                    .cornerRadius(cornerRadius)
-                    .shadow(radius: shadowRadius)
                     .padding()
                     
+                    
                     VStack {
+                        //Button 3
                         Button {
                             didTapOption(optionNumber: .three)
                         } label: {
@@ -101,6 +108,7 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                         
+//                        Button 4
                         Button {
                             didTapOption(optionNumber: .four)
                         } label: {
@@ -113,6 +121,7 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                     }
+                    
                     .alert(isPresented: $isAlertPresented) {
                         
                         Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
