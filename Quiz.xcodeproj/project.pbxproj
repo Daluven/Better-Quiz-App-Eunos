@@ -13,6 +13,7 @@
 		32D04F7C26664DDB00251584 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32D04F7B26664DDB00251584 /* Preview Assets.xcassets */; };
 		32D04F8426664E3600251584 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D04F8326664E3600251584 /* Question.swift */; };
 		32D04F86266651D300251584 /* ResultsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D04F85266651D300251584 /* ResultsScreen.swift */; };
+		D9716FD628644088001FF69F /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9716FD528644088001FF69F /* CircularProgressView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		32D04F7D26664DDB00251584 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32D04F8326664E3600251584 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		32D04F85266651D300251584 /* ResultsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsScreen.swift; sourceTree = "<group>"; };
+		D9716FD528644088001FF69F /* CircularProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				32D04F7426664DD500251584 /* QuizApp.swift */,
 				32D04F7626664DD500251584 /* ContentView.swift */,
+				D9716FD528644088001FF69F /* CircularProgressView.swift */,
 				32D04F85266651D300251584 /* ResultsScreen.swift */,
 				32D04F8326664E3600251584 /* Question.swift */,
 				32D04F7826664DDB00251584 /* Assets.xcassets */,
@@ -147,6 +150,7 @@
 				32D04F86266651D300251584 /* ResultsScreen.swift in Sources */,
 				32D04F8426664E3600251584 /* Question.swift in Sources */,
 				32D04F7726664DD500251584 /* ContentView.swift in Sources */,
+				D9716FD628644088001FF69F /* CircularProgressView.swift in Sources */,
 				32D04F7526664DD500251584 /* QuizApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
