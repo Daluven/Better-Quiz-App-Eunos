@@ -16,10 +16,15 @@ struct ResultsScreen: View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .bottom, endPoint: .leading)
                 .ignoresSafeArea(.all)
+            
             VStack {
-                CircularProgressView(progress: CGFloat(score) / CGFloat(totalQuestions))
-                    .frame(width: 250, height: 250)
+                ZStack {
+                    Text("\(Double(score) / Double(totalQuestions) * 100, specifier: "%.1f")%")
+                        .font(.title)
+                    CircularProgressView(progress: CGFloat(score) / CGFloat(totalQuestions))
+                        .frame(width: 250, height: 250)
                     .padding(30)
+                }
                 Text("You got")
                     .font(.title2)
                 Text("\(score)/\(totalQuestions)")
