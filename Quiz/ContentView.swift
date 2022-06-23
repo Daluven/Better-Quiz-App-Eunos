@@ -68,7 +68,6 @@ struct ContentView: View {
                     VStack {
                         //Button 1
                         Button {
-                            didTapOption(optionNumber: .one)
                         } label: {
                             Image(systemName: "triangle.fill")
                             Text((questions[currentQuestion].option1))
@@ -78,10 +77,12 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
+                        .onTapGesture {
+                            didTapOption(optionNumber: .one)
+                        }
                         
                         //Button 2
                         Button {
-                            didTapOption(optionNumber: .two)
                         } label: {
                             Image(systemName: "diamond.fill")
                             Text((questions[currentQuestion].option2))
@@ -91,6 +92,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
+                        .onTapGesture {
+                            didTapOption(optionNumber: .two)
+                        }
                     }
                     .padding()
                     
@@ -98,7 +102,6 @@ struct ContentView: View {
                     VStack {
                         //Button 3
                         Button {
-                            didTapOption(optionNumber: .three)
                         } label: {
                             Image(systemName: "circle.fill")
                             Text(questions[currentQuestion].option3)
@@ -108,10 +111,12 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
+                        .onTapGesture {
+                            didTapOption(optionNumber: .three)
+                        }
                         
 //                        Button 4
                         Button {
-                            didTapOption(optionNumber: .four)
                         } label: {
                             Image(systemName: "square.fill")
                             Text((questions[currentQuestion].option4))
@@ -121,6 +126,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
+                        .onTapGesture {
+                            didTapOption(optionNumber: .four)
+                        }
                     }
                     
                     .alert(isPresented: $isAlertPresented) {
