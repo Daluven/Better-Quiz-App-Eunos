@@ -38,8 +38,8 @@ struct ContentView: View {
     
     @State var isModalPresented = false
     
-    let width = 130.0
-    let height = 200.0
+    let width = 150.0
+    let height = 150.0
     let cornerRadius = 15.0
     let shadowRadius = 5.0
     
