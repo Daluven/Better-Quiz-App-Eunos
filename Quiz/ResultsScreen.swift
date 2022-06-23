@@ -13,14 +13,18 @@ struct ResultsScreen: View {
     var totalQuestions: Int
     
     var body: some View {
-        VStack {
-            CircularProgressView(progress: CGFloat(score) / CGFloat(totalQuestions))
-                .frame(width: 250, height: 250)
-                .padding(30)
-            Text("You got")
-                .font(.title2)
-            Text("\(score)/\(totalQuestions)")
-                .font(.title)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .bottom, endPoint: .leading)
+                .ignoresSafeArea(.all)
+            VStack {
+                CircularProgressView(progress: CGFloat(score) / CGFloat(totalQuestions))
+                    .frame(width: 250, height: 250)
+                    .padding(30)
+                Text("You got")
+                    .font(.title2)
+                Text("\(score)/\(totalQuestions)")
+                    .font(.title)
+            }
         }
     }
 }

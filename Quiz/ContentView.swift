@@ -38,46 +38,51 @@ struct ContentView: View {
     @State var isModalPresented = false
     
     var body: some View {
-        VStack {
-            Text(questions[currentQuestion].title)
-                .padding()
-            
-            HStack {
-                VStack {
-                    Button(questions[currentQuestion].option1) {
-                        didTapOption(optionNumber: .one)
+        ZStack {
+            LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .topLeading, endPoint: .trailing)
+                .ignoresSafeArea(.all)
+            VStack {
+                Text(questions[currentQuestion].title)
+                    .frame(width: 360, height: 200)
+                    .padding()
+                
+                HStack {
+                    VStack {
+                        Button(questions[currentQuestion].option1) {
+                            didTapOption(optionNumber: .one)
+                        }
+                        Button(questions[currentQuestion].option2) {
+                            didTapOption(optionNumber: .two)
+                        }
                     }
-                    Button(questions[currentQuestion].option2) {
-                        didTapOption(optionNumber: .two)
+                    .padding()
+                    VStack {
+                        Button(questions[currentQuestion].option3) {
+                            didTapOption(optionNumber: .three)
+                        }
+                        Button(questions[currentQuestion].option4) {
+                            didTapOption(optionNumber: .four)
+                        }
                     }
-                }
-                .padding()
-                VStack {
-                    Button(questions[currentQuestion].option3) {
-                        didTapOption(optionNumber: .three)
-                    }
-                    Button(questions[currentQuestion].option4) {
-                        didTapOption(optionNumber: .four)
-                    }
+                    .padding()
                 }
                 .padding()
             }
-            .padding()
+            .alert(isPresented: $isAlertPresented) {
+                
+                Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
+                      message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
+                      dismissButton: .default(Text("OK")) {
+                        currentQuestion += 1
+                        
+                        if currentQuestion == questions.count {
+                            isModalPresented = true
+                            currentQuestion = 0
+                        }
+                      })
+            }.sheet(isPresented: $isModalPresented) {
+                ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
         }
-        .alert(isPresented: $isAlertPresented) {
-            
-            Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
-                  message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
-                  dismissButton: .default(Text("OK")) {
-                    currentQuestion += 1
-                    
-                    if currentQuestion == questions.count {
-                        isModalPresented = true
-                        currentQuestion = 0
-                    }
-                  })
-        }.sheet(isPresented: $isModalPresented) {
-            ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
         }
     }
     
