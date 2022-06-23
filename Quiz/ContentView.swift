@@ -14,19 +14,19 @@ struct ContentView: View {
                               option2: "Friday",
                               option3: "Wednesday",
                               option4: "Saturday",
-                              correctOption: 4),
+                              correctOption: .four),
                      Question(title: "What framework are we using?",
                               option1: "UIKit",
                               option2: "SwiftUI",
                               option3: "React Native",
                               option4: "Flutter",
-                              correctOption: 2),
+                              correctOption: .two),
                      Question(title: "Which company created Swift?",
                               option1: "Apple",
                               option2: "Orange",
                               option3: "Google",
                               option4: "Tinkercademy",
-                              correctOption: 1)]
+                              correctOption: .one)]
     
     @State var currentQuestion = 0
     
