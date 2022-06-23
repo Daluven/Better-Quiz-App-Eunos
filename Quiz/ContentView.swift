@@ -17,7 +17,7 @@ struct ContentView: View {
                               correctOption: .four),
                      Question(title: "What framework are we using?",
                               option1: "UIKit",
-                              option2: "SwiftUI",
+                              option2: "SwiftU I",
                               option3: "React Native",
                               option4: "Flutter",
                               correctOption: .two),
@@ -47,6 +47,9 @@ struct ContentView: View {
             LinearGradient(gradient: Gradient(colors: [.red, .orange]), startPoint: .topLeading, endPoint: .trailing)
                 .ignoresSafeArea(.all)
             VStack {
+                ProgressView(value: Double(currentQuestion),
+                             total: Double(questions.count))
+                .padding()
                 Text(questions[currentQuestion].title)
                     .frame(width: 280, height: 120)
                     .background(Color.black)
@@ -54,46 +57,6 @@ struct ContentView: View {
                     .cornerRadius(cornerRadius)
                     .shadow(radius: shadowRadius)
                     .padding()
-        VStack {
-            
-            ProgressView(value: Double(currentQuestion),
-                         total: Double(questions.count))
-            .padding()
-             
-            Text(questions[currentQuestion].title)
-                .padding()
-            
-            HStack {
-                VStack {
-                    Button {
-                        didTapOption(optionNumber: .one)
-                    } label: {
-                        Image(systemName: "triangle.fill")
-                        Text((questions[currentQuestion].option1))
-                    }
-                    .frame(width: width, height: height)
-                    .background(Color.red)
-                    .foregroundColor(.white)
-                    .cornerRadius(cornerRadius)
-                    .shadow(radius: shadowRadius)
-                    
-                    Button {
-                        didTapOption(optionNumber: .two)
-                    } label: {
-                        Image(systemName: "diamond.fill")
-                        Text((questions[currentQuestion].option2))
-                    }
-                    .frame(width: width, height: height)
-                    .background(Color.green)
-                    .foregroundColor(.white)
-                    .cornerRadius(cornerRadius)
-                    .shadow(radius: shadowRadius)
-                }
-                    .foregroundColor(.white)
-                    .cornerRadius(cornerRadius)
-                    .shadow(radius: shadowRadius)
-                    .padding()
-                
                 HStack {
                     VStack {
                         Button {
@@ -120,6 +83,10 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                     }
+                    .foregroundColor(.white)
+                    .cornerRadius(cornerRadius)
+                    .shadow(radius: shadowRadius)
+                    .padding()
                     
                     VStack {
                         Button {
@@ -146,57 +113,26 @@ struct ContentView: View {
                         .cornerRadius(cornerRadius)
                         .shadow(radius: shadowRadius)
                     }
-                }
-                .alert(isPresented: $isAlertPresented) {
-                    
-                    Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
-                          message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
-                          dismissButton: .default(Text("OK")) {
-                        currentQuestion += 1
+                    .alert(isPresented: $isAlertPresented) {
                         
-                        if currentQuestion == questions.count {
-                            isModalPresented = true
-                            currentQuestion = 0
-                        }
-                    })
-                }.sheet(isPresented: $isModalPresented) {
-                    ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
-                }
-                .alert(isPresented: $isAlertPresented) {
-                    
-                    Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
-                          message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
-                          dismissButton: .default(Text("OK")) {
-                        currentQuestion += 1
-                        
-                        if currentQuestion == questions.count {
-                            isModalPresented = true
-                            currentQuestion = 0
-                        }
-                    })
-                }.sheet(isPresented: $isModalPresented) {
-                    ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
+                        Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
+                              message: Text(isCorrect ? "Congrats, you are kinda smart." : "This is outrageous, with such easy questions, how can you be getting this wrong?!"),
+                              dismissButton: .default(Text("OK")) {
+                            currentQuestion += 1
+                            
+                            if currentQuestion == questions.count {
+                                isModalPresented = true
+                                currentQuestion = 0
+                            }
+                        })
+                    }.sheet(isPresented: $isModalPresented) {
+                        ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
+                    }
+                .padding()
                 }
             }
-            .padding()
-        }
-        .alert(isPresented: $isAlertPresented) {
-            
-            Alert(title: Text(isCorrect ? "Correct" : "Wrong"),
-                  message: Text(isCorrect ? "Oh wow what is this ? you became smart ?" : "WHAT IS THIS TOMFOOLERY?! WITH THE POWER OF SHREK YOU WILL BE PUNISHED"),
-                  dismissButton: .default(Text("OK")) {
-                currentQuestion += 1
-                
-                if currentQuestion == questions.count {
-                    isModalPresented = true
-                    currentQuestion = 0
-                }
-            })
-        }.sheet(isPresented: $isModalPresented) {
-            ResultsScreen(score: correctAnswers, totalQuestions: questions.count)
         }
     }
-    
     func didTapOption(optionNumber: CorrectOptions) {
         if optionNumber == questions[currentQuestion].correctOption {
             print("Correct!")
